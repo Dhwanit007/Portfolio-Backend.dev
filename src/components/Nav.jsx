@@ -58,7 +58,7 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <a className="nav-cta" href={profile.resumeUrl} target="_blank" rel="noreferrer">
+        <a className="nav-cta" href={profile.resumeUrl} download="Dhwanit-Parani-Resume.pdf">
           Resume
           <svg
             className="nav-cta-icon"
