@@ -348,12 +348,21 @@ code,
 }
 
 .hero-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--text-faint);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.hero-meta-icon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
 }
 
 .hero-meta a:hover {
@@ -1010,6 +1019,7 @@ code,
 
 .typewriter-text {
   color: var(--teal);
+  margin-left: 4px;
   font-family: var(--font-mono);
 }
 

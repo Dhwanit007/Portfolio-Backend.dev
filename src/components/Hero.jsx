@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FiMail} from "react-icons/fi";
 import { profile } from "../data";
 import useCountUp from "../hooks/useCountUp";
 
@@ -110,12 +112,17 @@ export default function Hero() {
             </a>
           </div>
           <div className="hero-meta">
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <a href={`mailto:${profile.email}`}>
+              <FiMail className="hero-meta-icon" aria-hidden="true" />
+              Email
+            </a>
             <a href={profile.github} target="_blank" rel="noreferrer">
-              github.com/Dhwanit007
+              <FaGithub className="hero-meta-icon" aria-hidden="true" />
+              Github
             </a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer">
-              linkedin
+              <FaLinkedin className="hero-meta-icon" aria-hidden="true" />
+              Linkedin
             </a>
           </div>
 

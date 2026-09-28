@@ -17,7 +17,7 @@ export default function Contact() {
             </p>
             <div className="contact-actions">
               <a className="btn btn-primary" href={`mailto:${profile.email}`}>
-                {profile.email}
+                Email Me
               </a>
               <a className="btn btn-ghost" href={profile.linkedin} target="_blank" rel="noreferrer">
                 LinkedIn

@@ -6,7 +6,8 @@ const links = [
   ["Experience", "experience"],
   ["Projects", "projects"],
   ["Skills", "skills"],
-  ["Contact", "contact"],
+  ["Education", "education"],
+  ["Contact", "contact"]
 ];
 
 export default function Nav() {
