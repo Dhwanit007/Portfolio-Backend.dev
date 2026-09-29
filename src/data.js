@@ -6,7 +6,7 @@ export const profile = {
   phone: "+91 9909706200",
   github: "https://github.com/Dhwanit007",
   linkedin: "https://www.linkedin.com/in/dhwanit-parani-6a623a305/",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/Dhwanit_Parani_Resume.pdf",
   status: "available",
   summary:
     "Final-year B.Tech CSE student and Jr. Backend Developer who builds RESTful APIs, authentication systems and database-backed services with NestJS, Laravel and Node.js. Comfortable owning a feature from schema design to production deployment.",

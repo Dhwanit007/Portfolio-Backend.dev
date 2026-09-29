@@ -348,6 +348,7 @@ code,
 }
 
 .hero-meta a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -355,19 +356,33 @@ code,
   font-size: 13px;
   color: var(--text-faint);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .hero-meta-icon {
   width: 15px;
   height: 15px;
+  margin-bottom: 2px;
   flex: 0 0 auto;
 }
 
 .hero-meta a:hover {
   color: var(--teal);
-  border-color: var(--teal);
+}
+
+.hero-meta a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.25s ease;
+}
+
+.hero-meta a:hover::after {
+  width: 100%;
 }
 
 /* Terminal card */
@@ -1025,7 +1040,7 @@ code,
 
 .cursor-inline {
   position: relative;
-  top: 2px;
+  /* top: 2px; */
 }
 
 .terminal-float {
