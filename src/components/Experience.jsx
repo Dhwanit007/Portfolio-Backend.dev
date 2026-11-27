@@ -1,7 +1,6 @@
-import { experience } from "../data";
 import Reveal from "./Reveal.jsx";
 
-export default function Experience() {
+export default function Experience({ experience }) {
   return (
     <section id="experience">
       <div className="wrap">

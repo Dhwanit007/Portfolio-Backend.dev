@@ -1,7 +1,32 @@
-import { profile } from "../data";
 import Reveal from "./Reveal.jsx";
 
-export default function About() {
+function renderQuoteEmphasis(text) {
+  return text.split(/("[^"]+")/g).map((part, index) => {
+    if (!part.startsWith('"') || !part.endsWith('"')) return part;
+
+    return (
+      <span key={index}>
+        "{<i><b>{part.slice(1, -1)}</b></i>}"
+      </span>
+    );
+  });
+}
+
+export default function About({ profile }) {
+  const position = profile.currentPosition.replace(" @ ", " at ");
+  const positionPhrase = profile.about.includes(`${position}.`) ? `${position}.` : position;
+  const positionIndex = profile.about.indexOf(positionPhrase);
+  const aboutText =
+    positionIndex === -1 ? (
+      renderQuoteEmphasis(profile.about)
+    ) : (
+      <>
+        {renderQuoteEmphasis(profile.about.slice(0, positionIndex))}
+        <em>{positionPhrase}</em>
+        {renderQuoteEmphasis(profile.about.slice(positionIndex + positionPhrase.length))}
+      </>
+    );
+
   return (
     <section id="about">
       <div className="wrap about-grid">
@@ -14,24 +39,20 @@ export default function About() {
             Backend-first, product-minded.
           </Reveal>
           <Reveal as="p" variant="left" delay={120} className="about-lede">
-            I'm a final-year CSE student working as a <em>Jr. Backend Developer at SilverSky
-            Technology.</em> Most of my time goes into designing schemas, writing APIs that don't
-            fall over in production, and closing the gap between "<i><b>it works on my machine</b></i>" and
-            "<i><b>it's deployed.</b></i>" I care about clean auth flows, sensible database design, and code a
-            teammate can pick up without a walkthrough.
+            {aboutText}
           </Reveal>
           <Reveal as="ul" variant="left" delay={180} className="about-fact-list">
             <li>
               <dt>Currently</dt>
-              <dd>Jr. Backend Developer @ SilverSky Technology</dd>
+              <dd>{profile.currentPosition}</dd>
             </li>
             <li>
               <dt>Focus</dt>
-              <dd>NestJS · Laravel · PostgreSQL · REST APIs</dd>
+              <dd>{profile.focus}</dd>
             </li>
             <li>
               <dt>Studying</dt>
-              <dd>B.Tech CSE, Silver Oak University (2024 — Present)</dd>
+              <dd>{profile.studying}</dd>
             </li>
             <li>
               <dt>Based in</dt>

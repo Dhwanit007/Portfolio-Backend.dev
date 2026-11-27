@@ -1,5 +1,4 @@
 import Reveal from "./Reveal.jsx";
-import { projects } from "../data";
 
 function Endpoint({ project, delay }) {
   const isPersonal = project.type === "personal";
@@ -32,7 +31,7 @@ function Endpoint({ project, delay }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({ projects }) {
   const work = projects.filter((p) => p.type === "work");
   const personal = projects.filter((p) => p.type === "personal");
 

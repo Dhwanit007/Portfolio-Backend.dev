@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiMail} from "react-icons/fi";
-import { profile } from "../data";
 import useCountUp from "../hooks/useCountUp";
-
-const RESPONSE_LINES = [
-  { key: "name", value: profile.name },
-  { key: "role", value: profile.role },
-  { key: "location", value: profile.location },
-  { key: "stack", value: `[${profile.stack.map((s) => `"${s}"`).join(", ")}]`, raw: true },
-  { key: "status", value: profile.status },
-];
 
 const SPECIALTIES = [
   "RESTful APIs",
@@ -65,19 +56,26 @@ function Stat({ label, target }) {
   );
 }
 
-export default function Hero() {
+export default function Hero({ profile }) {
+  const responseLines = [
+    { key: "name", value: profile.name },
+    { key: "role", value: profile.role },
+    { key: "location", value: profile.location },
+    { key: "stack", value: `[${profile.stack.map((s) => `"${s}"`).join(", ")}]`, raw: true },
+    { key: "status", value: profile.status },
+  ];
   const [visibleLines, setVisibleLines] = useState(0);
   const [showCursorLine, setShowCursorLine] = useState(true);
   const typed = useTypewriter(SPECIALTIES);
 
   useEffect(() => {
-    if (visibleLines >= RESPONSE_LINES.length) return;
+    if (visibleLines >= responseLines.length) return;
     const t = setTimeout(() => setVisibleLines((v) => v + 1), 220);
     return () => clearTimeout(t);
   }, [visibleLines]);
 
   useEffect(() => {
-    if (visibleLines >= RESPONSE_LINES.length) {
+    if (visibleLines >= responseLines.length) {
       const t = setTimeout(() => setShowCursorLine(false), 400);
       return () => clearTimeout(t);
     }
@@ -147,7 +145,7 @@ export default function Hero() {
             </div>
             <div style={{ marginTop: 14 }}>
               <span className="terminal-punc">{"{"}</span>
-              {RESPONSE_LINES.slice(0, visibleLines).map((line, i) => (
+              {responseLines.slice(0, visibleLines).map((line, i) => (
                 <div key={line.key} style={{ paddingLeft: 18 }}>
                   <span className="terminal-key">"{line.key}"</span>
                   <span className="terminal-punc">: </span>
@@ -159,7 +157,7 @@ export default function Hero() {
                   {i < visibleLines - 1 && <span className="terminal-punc">,</span>}
                 </div>
               ))}
-              {visibleLines >= RESPONSE_LINES.length && (
+              {visibleLines >= responseLines.length && (
                 <span className="terminal-punc">{"}"}</span>
               )}
               {showCursorLine && <span className="cursor" />}

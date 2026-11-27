@@ -1,7 +1,6 @@
-import { skills } from "../data";
 import Reveal from "./Reveal.jsx";
 
-export default function Skills() {
+export default function Skills({ skills }) {
   return (
     <section id="skills">
       <div className="wrap">

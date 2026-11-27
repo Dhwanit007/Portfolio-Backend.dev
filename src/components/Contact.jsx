@@ -1,7 +1,6 @@
-import { profile } from "../data";
 import Reveal from "./Reveal.jsx";
 
-export default function Contact() {
+export default function Contact({ profile }) {
   return (
     <>
       <section id="contact">

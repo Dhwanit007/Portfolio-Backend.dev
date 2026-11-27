@@ -10,6 +10,11 @@ export const profile = {
   status: "available",
   summary:
     "Final-year B.Tech CSE student and Jr. Backend Developer who builds RESTful APIs, authentication systems and database-backed services with NestJS, Laravel and Node.js. Comfortable owning a feature from schema design to production deployment.",
+  about:
+    "I'm a final-year CSE student working as a Jr. Backend Developer at SilverSky Technology. Most of my time goes into designing schemas, writing APIs that don't fall over in production, and closing the gap between \"it works on my machine\" and \"it's deployed.\" I care about clean auth flows, sensible database design, and code a teammate can pick up without a walkthrough.",
+  currentPosition: "Jr. Backend Developer @ SilverSky Technology",
+  focus: "NestJS · Laravel · PostgreSQL · REST APIs",
+  studying: "B.Tech CSE, Silver Oak University (2024 — Present)",
   stack: [
     "NestJS",
     "Laravel",
@@ -77,24 +82,6 @@ export const experience = [
 export const projects = [
   {
     method: "GET",
-    path: "/projects/madras-club",
-    name: "Madras Club",
-    stack: ["NestJS", "PostgreSQL", "Supabase", "Whatsapp API", "IPay88 Payment Gateway"],
-    description:
-      "Backend modules and secure RESTful APIs for member management, bookings and event scheduling & notifications, chat integration, and payment processing.",
-    type: "work",
-  },
-  {
-    method: "GET",
-    path: "/projects/veliyx-rider-driver-application",
-    name: "Veliyx App",
-    stack: ["NestJS", "PostgreSQL", "Socket.IO", "Google Maps API"],
-    description:
-      "Scalable APIs for ride booking, driver management, authentication and real-time trip workflows.",
-    type: "work",
-  },
-  {
-    method: "GET",
     path: "/projects/within-pregnancy-app",
     name: "Within Pregnancy App",
     stack: ["NestJS", "PostgreSQL", "Firebase Cloud Messaging"],
@@ -104,11 +91,38 @@ export const projects = [
   },
   {
     method: "POST",
+    path: "/projects/madras-club-chatbot",
+    name: "MadrasClub Chat bot",
+    stack: ["NestJS", "PostgreSQL", "Supabase", "Whatsapp API"],
+    description:
+      "Chat bot project for Madras Club.",
+    type: "work",
+  },
+  {
+    method: "POST",
     path: "/projects/parent-ai",
-    name: "PARENT AI App",
+    name: "Parent AI",
     stack: ["NestJS", "AWS", "OpenAI", "HeyGen", "ElevenLabs", "PostgreSQL", "N8N"],
     description:
       "Integrated AI voice, avatar and chatbot services into scalable backend APIs and AWS workflows.",
+    type: "work",
+  },
+  {
+    method: "GET",
+    path: "/projects/veliyx-rider-driver-application",
+    name: "Veliyx",
+    stack: ["NestJS", "PostgreSQL", "Socket.IO", "Google Maps API"],
+    description:
+      "Scalable APIs for ride booking, driver management, authentication and real-time trip workflows.",
+    type: "work",
+  },
+  {
+    method: "GET",
+    path: "/projects/voice-over-actor-london",
+    name: "Voice Over Actor London",
+    stack: ["Names Website Editor"],
+    description:
+      "Drag-and-drop website for a London voice-over actor, created with the Names website editor.",
     type: "work",
   },
   {
@@ -123,10 +137,46 @@ export const projects = [
   {
     method: "GET",
     path: "/projects/saas-matrimonial-application",
-    name: "SaaS Matrimonial Application",
+    name: "SaaS Matrimonial",
     stack: ["NestJS", "PostgreSQL", "Supabase"],
     description:
       "A scalable SaaS application with a modern backend and database setup.",
+    type: "work",
+  },
+  {
+    method: "GET",
+    path: "/projects/inward-outward-simulation",
+    name: "Inward Outward Simulation",
+    stack: ["PHP", "Laravel", "a2Hosting", "MySQL"],
+    description:
+      "Inward/outward simulation built with PHP and Laravel, hosted on a2Hosting with MySQL.",
+    type: "work",
+  },
+  {
+    method: "GET",
+    path: "/projects/fashion-file",
+    name: "Fashion File",
+    stack: ["Next.js", "Vercel"],
+    description:
+      "Fashion File website built with Next.js and Vercel.",
+    type: "work",
+  },
+  {
+    method: "GET",
+    path: "/projects/ocr-document-tracking",
+    name: "OCR-Based Document Tracking",
+    stack: ["PHP", "Laravel", "a2Hosting", "MySQL"],
+    description:
+      "OCR-based document tracking application built with PHP and Laravel, hosted on a2Hosting with MySQL.",
+    type: "work",
+  },
+  {
+    method: "GET",
+    path: "/projects/inbound-outbound-simulation",
+    name: "Inbound - Outbound Simulation",
+    stack: ["NestJS", "Digital Ocean", "a2Hosting", "MySQL"],
+    description:
+      "Inbound/outbound simulation built with NestJS, Digital Ocean, a2Hosting and MySQL.",
     type: "work",
   },
   {
@@ -162,7 +212,19 @@ export const skills = [
   },
   {
     group: "Cloud & Deployment",
-    items: ["AWS EC2", "AWS S3", "AWS RDS", "AWS IAM", "Docker", "Nginx", "PM2", "Linux"],
+    items: [
+      "AWS EC2",
+      "AWS S3",
+      "AWS RDS",
+      "AWS IAM",
+      "Docker",
+      "Nginx",
+      "PM2",
+      "Linux",
+      "Vercel",
+      "Digital Ocean",
+      "a2Hosting",
+    ],
   },
   {
     group: "Languages",
@@ -170,11 +232,11 @@ export const skills = [
   },
   {
     group: "Frontend",
-    items: ["React.js", "Tailwind CSS", "Bootstrap"],
+    items: ["React.js", "Next.js", "Tailwind CSS", "Bootstrap"],
   },
   {
     group: "Tools",
-    items: ["Git", "GitHub", "Postman", "VS Code", "npm", "Composer"],
+    items: ["Git", "GitHub", "Postman", "VS Code", "npm", "Composer", "Names Website Editor"],
   },
 ];
 

@@ -35,13 +35,36 @@ Open the printed local URL (usually `http://localhost:5173`).
    and drop `your-photo.jpg` into `public/`.
 2. **Resume** — add your PDF as `public/resume.pdf` (the nav button and the
    `resumeUrl` in `src/data.js` already point to `/resume.pdf`).
-3. **Content** — everything editable (experience, projects, skills,
-   education, links) lives in `src/data.js`. No need to touch components for
-   text changes.
-4. **Personal project links** — `MERN Authentication System` and `VibeChat`
-   in `src/data.js` currently link to your GitHub profile (no specific repo
-   URL was available). Update each project's `url` field to the exact repo
-   link once you have one.
+3. **Content** — `src/data.js` provides fallback content; with Supabase
+   configured, edit the portfolio rows in Supabase instead.
+4. **Supabase content** — the portfolio loads its profile, experience,
+   projects, skills, and education from Supabase when configured. Without a
+   connection it continues to use `src/data.js`.
+
+## Connect Supabase
+
+1. Create a Supabase project.
+2. In the Supabase SQL Editor, run [`supabase/setup.sql`](./supabase/setup.sql).
+   It creates the portfolio tables, enables row-level security with public
+   read-only policies, and inserts the current portfolio details.
+3. Copy `.env.example` to `.env` and set `VITE_SUPABASE_URL` and
+   `VITE_SUPABASE_ANON_KEY` from the project's API settings. The public anon
+   (or publishable) key is intended for browser use; never use a `service_role`
+   key in this app. Vite loads this same `.env` file for local development and
+   production builds.
+4. Restart the dev server. Edit portfolio rows in Supabase Table Editor; the
+   site reads the latest published content on page load.
+5. In Vercel, add both variables in Project Settings → Environment Variables
+   and enable them for the Production environment (and Preview/Development if
+   needed). The ignored local `.env` file is not sent with Git deployments;
+   Vercel can import the `.env` file once, or you can enter the values there.
+
+Vite embeds `VITE_` values in the browser bundle, so use only the Supabase
+project URL and public anon/publishable key. Never put a `service_role` key in
+an environment file used by this frontend.
+
+The public policies only allow `SELECT`. Manage content using the Supabase
+dashboard, not through the public portfolio page.
 
 ## Deploy to GitHub Pages (same host as your current site)
 
@@ -61,7 +84,9 @@ Then in the repo's GitHub Settings → Pages, set the source branch to
 
 ```
 src/
-  data.js            resume content — edit this for text changes
+  data.js            local fallback content
+  portfolioContent.js Supabase content queries and mapping
+  supabase.js        Supabase client configuration
   App.jsx            page layout / section order
   index.css          design tokens + all styling
   components/
@@ -74,3 +99,6 @@ src/
     Education.jsx
     Contact.jsx
 ```
+
+`supabase/setup.sql` is safe to re-run for the included rows; it upserts those
+rows and does not remove any extra rows you add later.

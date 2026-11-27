@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { profile } from "../data";
 
 const links = [
   ["About", "about"],
@@ -10,7 +9,7 @@ const links = [
   ["Contact", "contact"]
 ];
 
-export default function Nav() {
+export default function Nav({ profile }) {
   const [progress, setProgress] = useState(0);
   const [active, setActive] = useState("");
 
