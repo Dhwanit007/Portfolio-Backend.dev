@@ -47,17 +47,16 @@ Open the printed local URL (usually `http://localhost:5173`).
 2. In the Supabase SQL Editor, run [`supabase/setup.sql`](./supabase/setup.sql).
    It creates the portfolio tables, enables row-level security with public
    read-only policies, and inserts the current portfolio details.
-3. Copy `.env.example` to `.env` and set `VITE_SUPABASE_URL` and
-   `VITE_SUPABASE_ANON_KEY` from the project's API settings. The public anon
-   (or publishable) key is intended for browser use; never use a `service_role`
-   key in this app. Vite loads this same `.env` file for local development and
-   production builds.
+3. Keep `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from the project's
+   API settings in the root `.env` file. The public anon (or publishable) key
+   is intended for browser use; never use a `service_role` key in this app.
+   Vite loads `.env` for local development and production builds.
 4. Restart the dev server. Edit portfolio rows in Supabase Table Editor; the
    site reads the latest published content on page load.
-5. In Vercel, add both variables in Project Settings → Environment Variables
-   and enable them for the Production environment (and Preview/Development if
-   needed). The ignored local `.env` file is not sent with Git deployments;
-   Vercel can import the `.env` file once, or you can enter the values there.
+5. In Vercel, add `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and
+   `CRON_SECRET` in Project Settings → Environment Variables and enable them
+   for Production. The ignored local `.env` file is not sent with Git
+   deployments; import it into Vercel once or enter the values there.
 
 Vite embeds `VITE_` values in the browser bundle, so use only the Supabase
 project URL and public anon/publishable key. Never put a `service_role` key in
@@ -65,6 +64,17 @@ an environment file used by this frontend.
 
 The public policies only allow `SELECT`. Manage content using the Supabase
 dashboard, not through the public portfolio page.
+
+## Keep Supabase active on Vercel
+
+`api/keep-supabase-active.js` is scheduled by `vercel.json` to make a
+read-only request to the portfolio profile table every Monday at 00:00 UTC.
+Set a unique `CRON_SECRET` in `.env` and use the same value in Vercel. Vercel
+sends it as a bearer token; unauthorized requests are rejected.
+
+Supabase may still pause a Free project if this single weekly request does not
+meet its activity threshold. Supabase says that a few database requests each
+day are typically enough, so this cron is best-effort rather than a guarantee.
 
 ## Deploy to GitHub Pages (same host as your current site)
 

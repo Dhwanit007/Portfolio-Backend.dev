@@ -829,6 +829,20 @@ code,
   flex-wrap: wrap;
 }
 
+.contact-panel p.contact-email-fallback {
+  margin: 20px auto 0;
+  font-size: 14px;
+}
+
+.contact-email-fallback a {
+  color: var(--amber);
+  text-underline-offset: 3px;
+}
+
+.contact-email-address {
+  user-select: all;
+}
+
 .footer {
   padding: 32px 0;
   text-align: center;
